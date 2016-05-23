@@ -14,10 +14,18 @@ server.connection({
 // Add the route
 server.route({
     method: 'GET',
-    path:'/hello',
+    path:'/',
     handler: function (request, reply) {
 
         return reply('hello world');
+    }
+});
+
+server.route({
+    method: 'GET',
+    path: '/{name}',
+    handler: function (request, reply) {
+        reply('Hello, ' + encodeURIComponent(request.params.name) + '!');
     }
 });
 
