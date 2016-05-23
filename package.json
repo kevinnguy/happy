@@ -1,0 +1,19 @@
+{
+  "name": "happy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "good": "^7.0.1",
+    "good-console": "^6.1.1",
+    "good-squeeze": "^3.0.1",
+    "hapi": "^13.4.1",
+    "joi": "^8.1.0",
+    "webpack": "^1.13.1"
+  }
+}
