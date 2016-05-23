@@ -5,9 +5,9 @@ const Good = require('good');
 
 
 // Create a server with a host and port
-const server = new Hapi.Server(+process.env.PORT, '0.0.0.0');
+const server = new Hapi.Server();
 server.connection({
-    host: 'localhost',
+    host: '0.0.0.0',
     port: 8000
 });
 
