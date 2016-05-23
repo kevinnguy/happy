@@ -13,6 +13,7 @@
     "good-console": "^6.1.1",
     "good-squeeze": "^3.0.1",
     "hapi": "^13.4.1",
+    "hapi-heroku-helpers": "^2.0.0",
     "joi": "^8.1.0",
     "webpack": "^1.13.1"
   }
