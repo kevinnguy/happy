@@ -26,42 +26,40 @@ server.route({
     }
 });
 
-// Start the server
-// server.register({
-//     register: Good,
-//     options: {
-//         reporters: {
-//             console: [{
-//                 module: 'good-squeeze',
-//                 name: 'Squeeze',
-//                 args: [{
-//                     response: '*',
-//                     log: '*'
-//                 }]
-//             }, {
-//                 module: 'good-console'
-//             }, 'stdout']
-//         }
-//     }
-// }, (err) => {
-//
-//     if (err) {
-//         throw err; // something bad happened loading the plugin
-//     }
-//
-//     server.start((err) => {
-//
-//         if (err) {
-//            throw err;
-//         }
-//         server.log('info', 'Server running at: ' + server.info.uri);
-//     });
-// });
+var goodPlugin = {
+    register: Good,
+    options: {
+        reporters: {
+            console: [{
+                module: 'good-squeeze',
+                name: 'Squeeze',
+                args: [{
+                    response: '*',
+                    log: '*'
+                }]
+            }, {
+                module: 'good-console'
+            }, 'stdout']
+        }
+    }
+};
 
-server.register(require('hapi-heroku-helpers'), function (err) {
+var plugins = [
+    require('hapi-heroku-helpers'),
+    goodPlugin
+];
 
-    // Assuming no err, start server
-    server.start(function () {
-      console.log('Server running at:', server.info.uri);
-    });
+// Start server
+server.register(plugins, function (err) {
+  if (err) {
+     throw err;
+  }
+
+  server.start(function (err) {
+    if (err) {
+       throw err;
+    }
+
+    console.log('Server running at:', server.info.uri);
+  });
 });
